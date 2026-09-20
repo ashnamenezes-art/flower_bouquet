@@ -1,0 +1,298 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --primary-rose: #d84370;
+    --primary-rose-light: #ffaec5;
+    --deep-wine: #3c1e28;
+    --muted-rose: #7d5062;
+    --champagne: #fdf6f0;
+    --glass-bg: rgba(255, 255, 255, 0.72);
+    --glass-border: rgba(255, 255, 255, 0.9);
+    --gold-accent: #e2a850;
+}
+
+body {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Montserrat', sans-serif;
+    background: radial-gradient(circle at 20% 20%, #fff0f5 0%, #fbe8ee 50%, #f3e5ee 100%);
+    color: var(--deep-wine);
+    overflow: hidden;
+    position: relative;
+}
+
+/* Background floating petals canvas */
+#petalsCanvas {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 1;
+}
+
+/* Ambient glowing orbs */
+.glow-orb {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(80px);
+    pointer-events: none;
+    z-index: 0;
+    opacity: 0.6;
+    animation: driftOrb 12s ease-in-out infinite alternate;
+}
+
+.orb-1 {
+    width: 380px;
+    height: 380px;
+    background: radial-gradient(circle, #ffccd9 0%, rgba(255, 204, 217, 0) 70%);
+    top: -60px;
+    left: -40px;
+}
+
+.orb-2 {
+    width: 440px;
+    height: 440px;
+    background: radial-gradient(circle, #ffe6c2 0%, rgba(255, 230, 194, 0) 70%);
+    bottom: -80px;
+    right: -40px;
+    animation-delay: -5s;
+}
+
+.orb-3 {
+    width: 320px;
+    height: 320px;
+    background: radial-gradient(circle, #ecd8f8 0%, rgba(236, 216, 248, 0) 70%);
+    bottom: 40%;
+    left: 60%;
+    animation-delay: -8s;
+}
+
+@keyframes driftOrb {
+    0% { transform: translate(0, 0) scale(1); }
+    50% { transform: translate(30px, -25px) scale(1.08); }
+    100% { transform: translate(-20px, 20px) scale(0.95); }
+}
+
+/* Main glass card */
+.welcome-container {
+    position: relative;
+    z-index: 2;
+    text-align: center;
+    max-width: 520px;
+    width: 90%;
+    padding: 50px 40px;
+    background: var(--glass-bg);
+    backdrop-filter: blur(18px);
+    -webkit-backdrop-filter: blur(18px);
+    border: 1px solid var(--glass-border);
+    border-radius: 36px;
+    box-shadow: 
+        0 20px 50px rgba(142, 68, 93, 0.1),
+        0 2px 10px rgba(255, 255, 255, 0.8) inset;
+    animation: slideUp 1s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+/* Rose badge */
+.flower-badge {
+    width: 100px;
+    height: 100px;
+    margin: 0 auto 20px;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.85);
+    box-shadow: 
+        0 10px 25px rgba(216, 67, 112, 0.2),
+        0 0 0 6px rgba(255, 255, 255, 0.5);
+    animation: floatBadge 4s ease-in-out infinite;
+}
+
+.preview-rose {
+    width: 78px;
+    height: 78px;
+    filter: drop-shadow(0 4px 8px rgba(180, 50, 85, 0.25));
+    transition: transform 0.4s ease;
+}
+
+.flower-badge:hover .preview-rose {
+    transform: scale(1.1) rotate(6deg);
+}
+
+.sub-heading {
+    display: inline-block;
+    font-size: 11px;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    color: var(--muted-rose);
+    margin-bottom: 12px;
+}
+
+h1 {
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-size: 42px;
+    font-weight: 600;
+    line-height: 1.18;
+    color: var(--deep-wine);
+    margin-bottom: 16px;
+    letter-spacing: -0.5px;
+}
+
+.description {
+    font-size: 15px;
+    line-height: 1.65;
+    color: var(--muted-rose);
+    margin-bottom: 36px;
+    font-weight: 300;
+    max-width: 400px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* Interactive CTA button */
+.bloom-btn {
+    border: none;
+    outline: none;
+    padding: 17px 38px;
+    font-size: 15px;
+    font-weight: 500;
+    font-family: 'Montserrat', sans-serif;
+    letter-spacing: 0.8px;
+    background: linear-gradient(135deg, #d84370 0%, #b82855 100%);
+    color: #ffffff;
+    border-radius: 50px;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 
+        0 10px 25px rgba(216, 67, 112, 0.35),
+        0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: all 0.35s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.bloom-btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 60%;
+    height: 100%;
+    background: linear-gradient(
+        90deg,
+        transparent,
+        rgba(255, 255, 255, 0.4),
+        transparent
+    );
+    transform: skewX(-20deg);
+    transition: left 0.75s ease;
+}
+
+.bloom-btn:hover {
+    transform: translateY(-3px) scale(1.02);
+    box-shadow: 
+        0 14px 32px rgba(216, 67, 112, 0.45),
+        0 3px 6px rgba(0, 0, 0, 0.1);
+}
+
+.bloom-btn:hover::before {
+    left: 140%;
+}
+
+.bloom-btn:active {
+    transform: translateY(1px) scale(0.99);
+}
+
+.btn-arrow {
+    transition: transform 0.3s ease;
+    font-size: 16px;
+}
+
+.bloom-btn:hover .btn-arrow {
+    transform: translateX(4px);
+}
+
+.btn-sparkle {
+    font-size: 16px;
+    animation: twinkle 2s ease-in-out infinite alternate;
+}
+
+.hint {
+    margin-top: 20px;
+    font-size: 12px;
+    letter-spacing: 0.5px;
+    color: #a08493;
+    font-style: italic;
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-size: 14px;
+}
+
+/* Animations */
+@keyframes slideUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px) scale(0.97);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+@keyframes floatBadge {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-10px);
+    }
+}
+
+@keyframes twinkle {
+    0% { transform: scale(0.9) rotate(-5deg); opacity: 0.8; }
+    100% { transform: scale(1.15) rotate(5deg); opacity: 1; }
+}
+
+.fade-out {
+    animation: fadeOutSmooth 0.7s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+@keyframes fadeOutSmooth {
+    from {
+        opacity: 1;
+        transform: scale(1) translateY(0);
+    }
+    to {
+        opacity: 0;
+        transform: scale(0.92) translateY(-20px);
+    }
+}
+
+@media (max-width: 480px) {
+    .welcome-container {
+        padding: 38px 24px;
+    }
+    h1 {
+        font-size: 32px;
+    }
+    .description {
+        font-size: 14px;
+    }
+    .bloom-btn {
+        width: 100%;
+        padding: 15px 24px;
+    }
+}

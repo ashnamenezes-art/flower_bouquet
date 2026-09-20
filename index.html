@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>A Special Surprise | For You</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,600&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <canvas id="petalsCanvas"></canvas>
+
+    <!-- Background glowing ambient spheres -->
+    <div class="glow-orb orb-1"></div>
+    <div class="glow-orb orb-2"></div>
+    <div class="glow-orb orb-3"></div>
+
+    <main class="welcome-container">
+        <div class="flower-badge">
+            <svg class="preview-rose" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <defs>
+                    <radialGradient id="roseGlow" cx="50%" cy="50%" r="50%">
+                        <stop offset="0%" stop-color="#ffb7cf" stop-opacity="0.8"/>
+                        <stop offset="100%" stop-color="#e06287" stop-opacity="0"/>
+                    </radialGradient>
+                    <linearGradient id="petalGrad1" x1="0%" y1="0%" x2="100%" y2="100%">
+                        <stop offset="0%" stop-color="#ffaec5"/>
+                        <stop offset="100%" stop-color="#d84370"/>
+                    </linearGradient>
+                    <linearGradient id="petalGrad2" x1="0%" y1="0%" x2="100%" y2="100%">
+                        <stop offset="0%" stop-color="#ffd1df"/>
+                        <stop offset="100%" stop-color="#e65a88"/>
+                    </linearGradient>
+                    <linearGradient id="leafGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                        <stop offset="0%" stop-color="#8bb194"/>
+                        <stop offset="100%" stop-color="#466d51"/>
+                    </linearGradient>
+                </defs>
+                <circle cx="50" cy="50" r="45" fill="url(#roseGlow)"/>
+                <!-- Leaves -->
+                <path d="M30 65 C15 65 10 50 18 40 C28 42 35 52 30 65Z" fill="url(#leafGrad)"/>
+                <path d="M70 65 C85 65 90 50 82 40 C72 42 65 52 70 65Z" fill="url(#leafGrad)"/>
+                <!-- Outer petals -->
+                <path d="M50 20 C68 20 82 32 80 52 C78 68 62 82 50 82 C38 82 22 68 20 52 C18 32 32 20 50 20Z" fill="url(#petalGrad1)" opacity="0.9"/>
+                <!-- Middle petals -->
+                <path d="M50 28 C62 28 72 38 70 54 C68 66 58 74 50 74 C42 74 32 66 30 54 C28 38 38 28 50 28Z" fill="url(#petalGrad2)"/>
+                <!-- Inner swirl petals -->
+                <path d="M50 36 C57 36 64 42 63 52 C62 60 55 66 50 66 C45 66 38 60 37 52 C36 42 43 36 50 36Z" fill="#ff7da7"/>
+                <path d="M46 44 C49 41 55 41 57 45 C59 49 56 55 52 57 C48 59 44 55 44 51 C44 48 45 45 46 44Z" fill="#f84d85"/>
+                <circle cx="50" cy="49" r="3.5" fill="#ffe082"/>
+            </svg>
+        </div>
+
+        <span class="sub-heading">Handcrafted Botanical Collection</span>
+        <h1>A little surprise awaits...</h1>
+        <p class="description">Something sweet, fragrant, and made with love is ready to bloom just for you.</p>
+
+        <button id="openButton" class="bloom-btn">
+            <span class="btn-sparkle">✨</span>
+            <span class="btn-text">Unwrap Your Bouquet</span>
+            <span class="btn-arrow">→</span>
+        </button>
+
+        <div class="hint">Click to begin the blooming experience</div>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>
